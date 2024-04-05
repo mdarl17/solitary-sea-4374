@@ -1,0 +1,17 @@
+<h1><%= @nation.split("+").map(&:capitalize).join(" ") %> Members</h1>
+<h3>Number of members: <%= @members.count %></h3>
+<% @members.each do |member| %>
+	<p class="name">Name: <%= member.name %></p>
+	<img class="photo" src=<%= member.photo %>>
+	<% if member.allies %></p>
+		<p class="allies">Allies: <%= member.allies.join(", ") %></p>
+	<% else %>
+		</p>Allies: None</p>
+	<% end %>
+	<% if member.enemies %></p>
+		<p class="enemies">Enemies: <%= member.enemies.join(", ") %></p>
+	<% else %>
+		</p>Enemies: None</p>
+	<% end %>
+	<p class="affiliations">Affiliations<%= member.affiliations %></p>
+<% end %>
