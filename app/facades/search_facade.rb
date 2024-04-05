@@ -3,10 +3,14 @@ class SearchFacade
 		members = NationsService.new.get_all_members(nation)
 		member_poros(members)
 	end
-	
+
 	def member_poros(member_hash)
-		member_hash.map do |member|
+		members = member_hash.map do |member|
 			Member.new(member)
+		end
+		
+		members.sort_by do |member_poro|
+			member_poro.name
 		end
 	end
 end
