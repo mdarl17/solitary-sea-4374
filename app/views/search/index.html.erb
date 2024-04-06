@@ -1,9 +1,9 @@
-<h1><%= @nation.split("+").map(&:capitalize).join(" ") %> Members</h1>
+<h1><%= @facade.nation_header(@nation) %> Members</h1>
 <h3>Number of members: <%= @members.count %></h3>
 <% @members.each do |member| %>
-	<p class="name">Name: <%= member.name %></p>
-	<img class="photo" src=<%= member.photo %>>
-	<% if member.allies %></p>
+	<h3 class="name"><%= member.name %></h3>
+	<img class="photo" alt=<%= "no_source_url_for_#{member.name}" %> src=<%= member.photo %>>
+	<% if member.allies %>
 		<p class="allies">Allies: <%= member.allies.join(", ") %></p>
 	<% else %>
 		</p>Allies: None</p>

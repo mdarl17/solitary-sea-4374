@@ -13,4 +13,10 @@ class SearchFacade
 			member_poro.name
 		end
 	end
+
+	def nation_header(nation)
+		nation.split("+")
+					.map(&:capitalize)
+					.join(" ")
+	end
 end

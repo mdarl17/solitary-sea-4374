@@ -13,7 +13,7 @@ feature "users can search by affiliation", :vcr, type: :feature do
 		expect(page).to have_content("Number of members: 97")
 
 		within(first(".name")) do 
-			expect(page).to have_content("Name: Afiko")
+			expect(page).to have_content("Afiko")
 		end
 
 		expect(page).to have_css(".photo")
