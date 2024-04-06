@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe NationsService do
+describe NationsService, :vcr do
   before(:each) do 
     @service = NationsService.new
   end

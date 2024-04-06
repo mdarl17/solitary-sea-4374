@@ -1,7 +1,7 @@
 require "rails_helper"
 require_relative "../test_data.rb"
 
-RSpec.describe "SearchFacade", type: :facade do 
+RSpec.describe "SearchFacade", :vcr, type: :facade do 
 	before(:each) do
 		@facade = SearchFacade.new
 		@um = TestData.new.unordered_members
@@ -42,12 +42,17 @@ RSpec.describe "SearchFacade", type: :facade do
 					expect(unordered[3][:name]).to eq("Kori Morishita")
 					expect(unordered[4][:name]).to eq("Bully guard")
 
+					# converted to Member poros (reason for dot notation)
 					expect(ordered[0].name).to eq("Bully guard")
 					expect(ordered[1].name).to eq("Fire Nation company leader")
 					expect(ordered[2].name).to eq("Guard captain")
 					expect(ordered[3].name).to eq("Kori Morishita")
 					expect(ordered[4].name).to eq("Tom-Tom")
 				end
+			end
+
+			it "formats the Nation header, removing '+' sign and capitalizing each word" do 
+				expect(@facade.nation_header("water+tribe+members")).to eq("Water Tribe Members")
 			end
 		end
 	end 
